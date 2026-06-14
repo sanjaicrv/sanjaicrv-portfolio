@@ -33,7 +33,7 @@ const Footer = () => {
   };
 
   return (
-    <footer ref={footerRef} className="bg-black text-white font-sans pt-12 md:pt-20 border-t border-white h-screen flex flex-col">
+    <footer ref={footerRef} className="bg-black text-white font-sans pt-12 md:pt-20 border-t border-white min-h-screen lg:h-screen flex flex-col justify-between">
 
       {/* Top Section: Info Grid */}
       <motion.div
@@ -128,7 +128,7 @@ const Footer = () => {
         style={{ opacity: textOpacity, scale: textScale }}
         className="w-full flex-1 flex flex-col justify-center items-center overflow-hidden select-none pb-4"
       >
-        <h1 className="font-sans font-black text-[23vw] leading-[0.8] text-white uppercase tracking-tighter flex items-start">
+        <h1 className="font-sans font-black text-[clamp(4rem,22vw,22rem)] leading-[0.8] text-white uppercase tracking-tighter flex items-start">
           Sanjai
           <span className="text-xl md:text-4xl lg:text-6xl font-medium mt-[2vw] ml-1 opacity-60">
             ®

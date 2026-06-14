@@ -103,7 +103,7 @@ const SkillsPhilosophy = () => {
             <span className="text-[10px] font-black tracking-[0.25em] text-neutral-400 uppercase font-mono flex items-center gap-1.5">
               <Sparkles size={11} className="animate-pulse text-neutral-400" /> 03 // Core Ecosystem
             </span>
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight mt-3 text-left text-neutral-900">
+            <h2 className="text-[clamp(2rem,6vw,3rem)] font-black uppercase tracking-tight mt-3 text-left text-neutral-900">
               Developer Skills
             </h2>
           </div>
@@ -120,14 +120,14 @@ const SkillsPhilosophy = () => {
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="menu-item-hover relative overflow-hidden h-[110px] border-b border-neutral-200 flex items-center justify-between px-6 md:px-12 transition-colors duration-300 hover:border-neutral-400 cursor-pointer group"
+              className="menu-item-hover relative overflow-hidden min-h-[110px] py-4 md:py-0 border-b border-neutral-200 flex items-center justify-between px-6 md:px-12 transition-colors duration-300 hover:border-neutral-400 cursor-pointer group"
             >
               {/* Default Row Content */}
-              <div className="flex items-baseline gap-6 md:gap-10 z-10 relative">
+              <div className="flex items-center gap-6 md:gap-10 z-10 relative flex-wrap">
                 <span className="text-xs md:text-sm font-mono text-neutral-400 select-none">
                   0{index + 1}
                 </span>
-                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-neutral-400 group-hover:text-black transition-colors duration-300 select-none">
+                <h3 className="text-[clamp(1.25rem,4.5vw,2.25rem)] font-black uppercase tracking-tight text-neutral-400 group-hover:text-black transition-colors duration-300 select-none">
                   {category.title}
                 </h3>
               </div>

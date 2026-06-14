@@ -27,7 +27,7 @@ const RecruiterQuickView = ({ isOpen, onClose }: RecruiterQuickViewProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 30 }}
             transition={{ type: "spring", stiffness: 200, damping: 22 }}
-            className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-[#09090c] p-6 text-white overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="relative w-full max-w-lg max-h-[90dvh] rounded-2xl border border-white/10 bg-[#09090c] p-6 text-white overflow-y-auto shadow-2xl flex flex-col justify-between"
           >
             {/* Ambient Lighting Blob */}
             <div className="absolute -top-12 -right-12 w-[180px] h-[180px] bg-white/5 rounded-full blur-[60px] pointer-events-none" />

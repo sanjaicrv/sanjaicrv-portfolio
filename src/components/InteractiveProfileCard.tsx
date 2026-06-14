@@ -88,7 +88,7 @@ const InteractiveProfileCard = () => {
           x: glowX,
           y: glowY,
         }}
-        className="absolute w-[290px] h-[410px] rounded-2xl bg-gradient-to-tr from-white/10 via-white/5 to-white/10 pointer-events-none transition-all duration-300"
+        className="absolute w-[90%] h-[90%] rounded-2xl bg-gradient-to-tr from-white/10 via-white/5 to-white/10 pointer-events-none transition-all duration-300"
       />
 
       {/* Main Card Container */}
@@ -110,7 +110,7 @@ const InteractiveProfileCard = () => {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-[320px] h-[440px] rounded-2xl border border-white/15 bg-black/[0.15] backdrop-blur-2xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] p-4.5 flex flex-col justify-between overflow-visible group"
+        className="relative w-full max-w-[320px] h-[440px] rounded-2xl border border-white/15 bg-black/[0.15] backdrop-blur-2xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] p-4.5 flex flex-col justify-between overflow-visible group"
       >
         {/* Dynamic radial spotlight overlay */}
         <div

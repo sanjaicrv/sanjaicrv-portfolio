@@ -78,7 +78,7 @@ const Contact = () => {
             <span className="text-[10px] font-black tracking-[0.25em] text-white/50 uppercase font-mono flex items-center gap-1.5">
               <Sparkles size={11} className="animate-pulse" /> 04 // Connect
             </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.9] tracking-tighter text-white mt-4">
+            <h1 className="text-[clamp(2.5rem,8vw,6rem)] font-black uppercase leading-[0.9] tracking-tighter text-white mt-4">
               Get in <br />
               touch <span className="inline-block text-white">→</span>
             </h1>
@@ -120,7 +120,7 @@ const Contact = () => {
                   <input
                     type="text" id="firstName" name="firstName"
                     value={formData.firstName} onChange={handleChange}
-                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-sm font-medium text-white focus:outline-none transition-all duration-300"
+                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-base md:text-sm font-medium text-white focus:outline-none transition-all duration-300"
                     required
                   />
                 </div>
@@ -129,7 +129,7 @@ const Contact = () => {
                   <input
                     type="text" id="lastName" name="lastName"
                     value={formData.lastName} onChange={handleChange}
-                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-sm font-medium text-white focus:outline-none transition-all duration-300"
+                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-base md:text-sm font-medium text-white focus:outline-none transition-all duration-300"
                     required
                   />
                 </div>
@@ -142,7 +142,7 @@ const Contact = () => {
                   <input
                     type="email" id="email" name="email"
                     value={formData.email} onChange={handleChange}
-                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-sm font-medium text-white focus:outline-none transition-all duration-300"
+                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-base md:text-sm font-medium text-white focus:outline-none transition-all duration-300"
                     required
                   />
                 </div>
@@ -151,7 +151,7 @@ const Contact = () => {
                   <input
                     type="text" id="subject" name="subject"
                     value={formData.subject} onChange={handleChange}
-                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-sm font-medium text-white focus:outline-none transition-all duration-300"
+                    className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-base md:text-sm font-medium text-white focus:outline-none transition-all duration-300"
                     required
                   />
                 </div>
@@ -163,7 +163,7 @@ const Contact = () => {
                 <textarea
                   id="message" name="message" rows={4}
                   value={formData.message} onChange={handleChange}
-                  className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-sm font-medium text-white focus:outline-none transition-all duration-300 resize-none"
+                  className="w-full bg-white/[0.02] border border-white/10 focus:border-white focus:bg-white/[0.04] py-2.5 px-3 rounded text-base md:text-sm font-medium text-white focus:outline-none transition-all duration-300 resize-none"
                   required
                 />
               </div>

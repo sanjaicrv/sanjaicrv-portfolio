@@ -134,7 +134,6 @@ const Navigation = () => {
           />
         </button>
       </div>
-
       <AnimatePresence>
         {open && (
           <motion.div
@@ -143,68 +142,70 @@ const Navigation = () => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-[100] bg-black flex flex-col justify-between px-8 md:px-16 pt-16 pb-10 md:pt-20 md:pb-14"
+            className="fixed inset-0 h-[100dvh] z-[100] bg-black px-6 md:px-16 pt-20 pb-10 md:pt-24 md:pb-14 overflow-y-auto"
           >
-            {/* Socials row */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-4 pt-10 md:pt-0">
-              <p className="text-sm text-white/70 uppercase tracking-widest font-mono mr-2">
-                Socials
-              </p>
-              {socialItems.map((item, i) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  custom={i}
-                  variants={socialVariants}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  className="text-base md:text-lg font-medium text-white hover:opacity-40"
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Nav Links */}
-            <nav className="flex flex-col gap-0">
-              {navItems.map((item, i) => (
-                <div
-                  key={item.label}
-                  className="overflow-hidden border-b border-white/25 py-3 md:py-4"
-                >
+            <div className="flex flex-col justify-between min-h-full w-full gap-8">
+              {/* Socials row */}
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-10 md:pt-0">
+                <p className="text-sm text-white/70 uppercase tracking-widest font-mono mr-2">
+                  Socials
+                </p>
+                {socialItems.map((item, i) => (
                   <motion.a
+                    key={item.label}
                     href={item.href}
-                    onClick={handleNavClick}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     custom={i}
-                    variants={itemVariants}
+                    variants={socialVariants}
                     initial="closed"
                     animate="open"
                     exit="closed"
-                    className="flex items-baseline justify-between group cursor-pointer"
+                    className="text-base md:text-lg font-medium text-white hover:opacity-40"
                   >
-                    <span className="text-5xl md:text-7xl lg:text-8xl font-semibold text-white uppercase tracking-tight leading-none group-hover:translate-x-3 transition-transform duration-300 ease-out">
-                      {item.label}
-                    </span>
-                    <span className="text-xs text-white/55 font-mono tracking-widest self-start mt-2">
-                      {item.number}
-                    </span>
+                    {item.label}
                   </motion.a>
-                </div>
-              ))}
-            </nav>
+                ))}
+              </div>
 
-            {/* Bottom copyright */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 1.2, duration: 0.8 } }}
-              exit={{ opacity: 0, transition: { duration: 0.6 } }}
-              className="text-xs text-white/20 font-mono tracking-widest mt-8 md:mt-0 md:self-end"
-            >
-              © 2026 SANJAI CRV
-            </motion.p>
+              {/* Nav Links */}
+              <nav className="flex flex-col gap-0 my-auto py-6">
+                {navItems.map((item, i) => (
+                  <div
+                    key={item.label}
+                    className="overflow-hidden border-b border-white/25 py-3 md:py-4"
+                  >
+                    <motion.a
+                      href={item.href}
+                      onClick={handleNavClick}
+                      custom={i}
+                      variants={itemVariants}
+                      initial="closed"
+                      animate="open"
+                      exit="closed"
+                      className="flex items-baseline justify-between group cursor-pointer"
+                    >
+                      <span className="text-[clamp(2.2rem,7vw,6.5rem)] font-semibold text-white uppercase tracking-tight leading-none group-hover:translate-x-3 transition-transform duration-300 ease-out">
+                        {item.label}
+                      </span>
+                      <span className="text-xs text-white/55 font-mono tracking-widest self-start mt-2">
+                        {item.number}
+                      </span>
+                    </motion.a>
+                  </div>
+                ))}
+              </nav>
+
+              {/* Bottom copyright */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 1.2, duration: 0.8 } }}
+                exit={{ opacity: 0, transition: { duration: 0.6 } }}
+                className="text-xs text-white/20 font-mono tracking-widest md:self-end"
+              >
+                © 2026 SANJAI CRV
+              </motion.p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -154,7 +154,7 @@ const MobileSocialStrip = () => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-      className="flex flex-col items-center gap-6 select-none"
+      className="flex flex-row items-center gap-5 select-none"
     >
       {socials.map(({ label, icon: Icon, href }) => (
         <a key={label} href={href} target={href.startsWith("mailto") ? "_self" : "_blank"} rel="noopener noreferrer"
@@ -235,6 +235,29 @@ const OrbitIcon = ({ delay, icon: Icon, radius, duration }: OrbitIconProps) => {
 const Index = () => {
   const footerContainerRef = useRef<HTMLDivElement>(null);
   const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [orbitRadius, setOrbitRadius] = useState(210);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 1024);
+      if (width < 380) {
+        setOrbitRadius(125);
+      } else if (width < 480) {
+        setOrbitRadius(140);
+      } else if (width < 768) {
+        setOrbitRadius(160);
+      } else if (width < 1024) {
+        setOrbitRadius(180);
+      } else {
+        setOrbitRadius(210);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: footerContainerRef,
@@ -255,8 +278,8 @@ const Index = () => {
       <CursorFollower />
       <Navigation />
 
-      {/* Fixed background About section */}
-      <div className="fixed inset-0 z-0 bg-white text-black">
+      {/* Fixed background About section (only visible on desktop) */}
+      <div className="fixed inset-0 z-0 bg-white text-black hidden lg:block">
         <About />
       </div>
 
@@ -296,7 +319,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                className="font-sans font-black text-6xl md:text-8xl lg:text-[6.5rem] xl:text-[8rem] leading-[0.85] tracking-tighter text-white uppercase"
+                className="font-sans font-black text-[clamp(3.2rem,11vw,8rem)] leading-[0.85] tracking-tighter text-white uppercase"
               >
                 Sanjai<br />CRV
               </motion.h1>
@@ -365,11 +388,11 @@ const Index = () => {
           {/* Right Column: 3D profile interactive card surrounded by orbiting icons */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end relative items-center min-h-[450px]">
             {/*Orbiting Path Badges */}
-            <OrbitIcon delay={0} icon={Terminal} radius={210} duration={14} />
-            <OrbitIcon delay={3} icon={Cpu} radius={210} duration={14} />
-            <OrbitIcon delay={6} icon={Layers} radius={210} duration={14} />
-            <OrbitIcon delay={9} icon={Database} radius={210} duration={14} />
-            <OrbitIcon delay={12} icon={Cloud} radius={210} duration={14} />
+            <OrbitIcon delay={0} icon={Terminal} radius={orbitRadius} duration={14} />
+            <OrbitIcon delay={3} icon={Cpu} radius={orbitRadius} duration={14} />
+            <OrbitIcon delay={6} icon={Layers} radius={orbitRadius} duration={14} />
+            <OrbitIcon delay={9} icon={Database} radius={orbitRadius} duration={14} />
+            <OrbitIcon delay={12} icon={Cloud} radius={orbitRadius} duration={14} />
             
             <InteractiveProfileCard />
           </div>
@@ -389,7 +412,12 @@ const Index = () => {
 
       {/* Content stack */}
       <div className="relative z-20 w-full bg-transparent">
-        <div id="about" className="h-screen w-full pointer-events-none" />
+        {/* About reveal spacer: renders the About component inline on mobile, but serves as transparent spacer on desktop */}
+        <div id="about" className="relative lg:h-screen w-full bg-white lg:bg-transparent lg:pointer-events-none">
+          <div className="lg:hidden text-black w-full">
+            <About />
+          </div>
+        </div>
 
         <div id="work" className="bg-black text-white relative z-20">
           <SelectedWorks />
@@ -406,9 +434,9 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Parallax Footer Reveal Stack */}
-      <div ref={footerContainerRef} className="relative z-0 h-screen w-full overflow-hidden bg-black text-white">
-        <motion.div style={{ y: footerY }} className="h-full w-full">
+      {/* Parallax Footer Reveal Stack (Parallax on desktop, normal flow on mobile) */}
+      <div ref={footerContainerRef} className="relative z-0 lg:h-screen w-full lg:overflow-hidden bg-black text-white">
+        <motion.div style={{ y: isMobile ? 0 : footerY }} className="h-full w-full lg:h-full">
           <Footer />
         </motion.div>
       </div>
