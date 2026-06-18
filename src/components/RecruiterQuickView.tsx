@@ -98,7 +98,7 @@ const RecruiterQuickView = ({ isOpen, onClose }: RecruiterQuickViewProps) => {
             {/* Quick Actions Panel */}
             <div className="grid grid-cols-3 gap-3 border-t border-white/5 pt-5 relative z-10 font-mono">
               <a
-                href="/Sanjai_CRV_Resume.pdf"
+                href="/Sanjai CRV Resume.pdf"
                 download
                 className="flex items-center justify-center gap-1.5 bg-white hover:bg-neutral-200 transition-colors text-black font-black uppercase text-[10px] tracking-widest py-3 rounded-md shadow-lg"
               >
